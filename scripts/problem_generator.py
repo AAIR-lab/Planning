@@ -1,4 +1,17 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+__copyright__ = "Copyright 2019, AAIR Lab, ASU"
+__authors__ = ["Chirav Dave", "Naman Shah"]
+__credits__ = ["Siddharth Srivastava"]
+__license__ = "MIT"
+__version__ = "1.0"
+__maintainers__ = ["Pulkit Verma", "Abhyudaya Srinet"]
+__contact__ = "aair.lab@asu.edu"
+__docformat__ = 'reStructuredText'
+
 import pickle
+
 def write_objects(fhandle,object_dict):
 	book_list = object_dict["books"].keys()
 	book_loc_list = [book_name + "_iloc" for book_name in book_list]

@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+__copyright__ = "Copyright 2019, AAIR Lab, ASU"
+__authors__ = ["Chirav Dave"]
+__credits__ = ["Siddharth Srivastava"]
+__license__ = "MIT"
+__version__ = "1.0"
+__maintainers__ = ["Pulkit Verma", "Abhyudaya Srinet"]
+__contact__ = "aair.lab@asu.edu"
+__docformat__ = 'reStructuredText'
+
 from collections import defaultdict
 import numpy as np
 import argparse
@@ -238,7 +250,7 @@ def generate_blocked_edges(grid_dimension, list_of_number_of_books, seed,  numbe
 
 	object_dict["books"] = books
 	object_dict["bins"] = trollies
- 	with open(root_path + '/books.json', 'w') as fp:
+ 	with open(root_path + '/objects.json', 'w') as fp:
  		json.dump(object_dict, fp)
 
  	mazeInfo = [(0,grid_dimension, "EAST", myscale), blocked_edges]

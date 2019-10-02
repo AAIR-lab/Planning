@@ -1,4 +1,14 @@
 #!/usr/bin/env python
+# encoding: utf-8
+
+__copyright__ = "Copyright 2019, AAIR Lab, ASU"
+__authors__ = ["Naman Shah", "Chirav Dave", "Ketan Patil", "Pulkit Verma"]
+__credits__ = ["Siddharth Srivastava"]
+__license__ = "MIT"
+__version__ = "1.0"
+__maintainers__ = ["Pulkit Verma", "Abhyudaya Srinet"]
+__contact__ = "aair.lab@asu.edu"
+__docformat__ = 'reStructuredText'
 
 import rospy
 from gazebo_msgs.msg import ModelState
@@ -9,11 +19,10 @@ from planning.srv import RemoveBlockedEdgeMsg
 from planning.srv import MoveActionMsg
 
 class RobotActionsServer:
-	def __init__(self,object_dict):
-		# rospy.init_node("action_server")
-		self.object_dict = object_dict
+	def __init__(self, object_dict):
 		self.failure = -1
 		self.success = 1
+		self.object_dict = object_dict
 		self.empty = True
 		self.status = String(data='Idle')
 		self.model_state_publisher = rospy.Publisher("/gazebo/set_model_state",ModelState,queue_size = 10)
@@ -40,14 +49,14 @@ class RobotActionsServer:
 		except rospy.ServiceException,e:
 			print "Sevice call failed: %s"%e
 
-
-	def execute_place_action(self,req):
+	def execute_place_action(self, req):
 		book_name = req.book_name
 		bin_name = req.bin_name
 		robot_state = (req.x , req.y , req.orientation)
 		if book_name in self.object_dict["books"] and bin_name in self.object_dict["bins"]:
 			if (robot_state[0],robot_state[1]) in self.object_dict["bins"][bin_name]["load_loc"]:
-				if self.object_dict["books"][book_name]["size"] == self.object_dict["bins"][bin_name]["size"]:
+				if self.object_dict["books"][book_name]["size"] == self.object_dict["bins"][bin_name]["size"] and \
+					 self.object_dict["books"][book_name]["subject"] == self.object_dict["bins"][bin_name]["subject"]:
 					goal_loc = list(self.object_dict["bins"][bin_name]["loc"])
 					goal_loc[0] = goal_loc[0] + 0.5
 					goal_loc[1] = goal_loc[1] + 0.5
@@ -58,7 +67,7 @@ class RobotActionsServer:
 		self.status_publisher.publish(self.status)
 		return self.failure
 
-	def execute_pick_action(self,req):
+	def execute_pick_action(self, req):
 		book_name = req.book_name
 		robot_state = [req.x , req.y ,req.orientation]
 		if book_name in self.object_dict["books"]:
@@ -72,10 +81,9 @@ class RobotActionsServer:
 		self.status_publisher.publish(self.status)
 		return self.failure
 
-	def execute_move_action(self,req):
-		action_str = req.actions
-		print action_str
-		self.action_publisher.publish(String(data=action_str))
+	def execute_move_action(self, req):
+		action_seq = req.actions
+		self.action_publisher.publish(String(data=action_seq))
 		return self.success
 
 

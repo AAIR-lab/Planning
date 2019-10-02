@@ -1,4 +1,14 @@
-#! /usr/bin/python
+#!/usr/bin/env python
+# encoding: utf-8
+
+__copyright__ = "Copyright 2019, AAIR Lab, ASU"
+__authors__ = ["Naman Shah"]
+__credits__ = ["Siddharth Srivastava"]
+__license__ = "MIT"
+__version__ = "1.0"
+__maintainers__ = ["Pulkit Verma", "Abhyudaya Srinet"]
+__contact__ = "aair.lab@asu.edu"
+__docformat__ = 'reStructuredText'
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -24,6 +34,7 @@ class moveTbot3:
 		self.status_publisher = rospy.Publisher("/status",String,queue_size = 10)
 		self.free = String(data = "Idle")
 		self.rate = rospy.Rate(30)
+		print "Ready!"
 		rospy.spin()
 
 	def callback_pid(self,data):

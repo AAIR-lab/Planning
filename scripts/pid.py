@@ -1,4 +1,14 @@
-#! /usr/bin/python
+#!/usr/bin/env python
+# encoding: utf-8
+
+__copyright__ = "Copyright 2019, AAIR Lab, ASU"
+__authors__ = ["Kislay Kumar", "Abhyudaya Srinet"]
+__credits__ = ["Siddharth Srivastava"]
+__license__ = "MIT"
+__version__ = "1.0"
+__maintainers__ = ["Pulkit Verma", "Abhyudaya Srinet"]
+__contact__ = "aair.lab@asu.edu"
+__docformat__ = 'reStructuredText'
 
 import rospy
 import math
