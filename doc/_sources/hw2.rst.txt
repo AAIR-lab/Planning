@@ -60,7 +60,7 @@ Refer to `Homework 0 Webpage <https://aair-lab.github.io/teaching/571_f19_hw/hw0
 
 	  cd ~/catkin_ws/src && git clone https://github.com/AAIR-lab/planning.git
 
-#. Change permission of all scripts in search folder to make them executable.
+#. Change permission of all scripts in planning folder to make them executable.
 
 	.. code-block:: bash
 
@@ -126,11 +126,11 @@ Moving TurtleBot
 
 		roscore
 
-#. In a new terminal session, run the server file (located at ~/catkin_ws/src/search/scripts/server.py). Use the arguments to provide the number of subjects, number of books of each subject, and random seed. 
+#. In a new terminal session, run the server file (located at ~/catkin_ws/src/planning/scripts/server.py). Use the arguments to provide the number of subjects, number of books of each subject, and random seed. 
 
 	.. code-block:: bash
 
-		rosrun search server.py
+		rosrun planning server.py
 
 	Use -- help option to see how to pass arguments to the server.
 
@@ -153,13 +153,13 @@ Moving TurtleBot
 
 	.. code-block:: bash
 
-		roslaunch search maze.launch
+		roslaunch planning maze.launch
 
 #. Run the move_tbot3.py file in a new terminal. It enables the movement of TurtleBot3.
 
 	.. code-block:: bash
 
-		rosrun search move_tbot3.py
+		rosrun planning move_tbot3.py
 
 #. Complete the problem.pddl and domain.pddl to proceed further. This is explained in next few sections.
 
@@ -169,13 +169,13 @@ Moving TurtleBot
 
 	.. code-block:: bash
 
-		rosrun search refinement.py -step 1
+		rosrun planning refinement.py -step 1
 
 #. Run refinement.py to run the TurtleBot.
 
 	.. code-block:: bash
 
-		rosrun search refinement.py -step 2
+		rosrun planning refinement.py -step 2
 
 	Run refinement.py with -h parameter to see it's usage.
 

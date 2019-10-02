@@ -246,7 +246,7 @@ Refer to <a class="reference external" href="https://aair-lab.github.io/teaching
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Change permission of all scripts in search folder to make them executable.</p>
+<li><p class="first">Change permission of all scripts in planning folder to make them executable.</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod u+x ~/catkin_ws/src/planning/scripts/*.py
 </pre></div>
@@ -321,9 +321,9 @@ Refer to <a class="reference external" href="https://aair-lab.github.io/teaching
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">In a new terminal session, run the server file (located at ~/catkin_ws/src/search/scripts/server.py). Use the arguments to provide the number of subjects, number of books of each subject, and random seed.</p>
+<li><p class="first">In a new terminal session, run the server file (located at ~/catkin_ws/src/planning/scripts/server.py). Use the arguments to provide the number of subjects, number of books of each subject, and random seed.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search server.py
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun planning server.py
 </pre></div>
 </div>
 <p>Use – help option to see how to pass arguments to the server.</p>
@@ -344,14 +344,14 @@ optional arguments:
 </li>
 <li><p class="first">Launch the maze in a new terminal.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch search maze.launch
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch planning maze.launch
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">Run the move_tbot3.py file in a new terminal. It enables the movement of TurtleBot3.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search move_tbot3.py
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun planning move_tbot3.py
 </pre></div>
 </div>
 </div></blockquote>
@@ -362,14 +362,14 @@ optional arguments:
 </li>
 <li><p class="first">Run refinement.py to generate the plan.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search refinement.py -step <span class="m">1</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun planning refinement.py -step <span class="m">1</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">Run refinement.py to run the TurtleBot.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search refinement.py -step <span class="m">2</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun planning refinement.py -step <span class="m">2</span>
 </pre></div>
 </div>
 <p>Run refinement.py with -h parameter to see it’s usage.</p>
