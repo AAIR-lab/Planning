@@ -64,7 +64,7 @@ Refer to `Homework 0 Webpage <https://aair-lab.github.io/teaching/571_f19_hw/hw0
 
 	.. code-block:: bash
 
-	   chmod u+x ~/catkin_ws/src/planning/*.py
+	   chmod u+x ~/catkin_ws/src/planning/scripts/*.py
 
 #. Execute the env_setup.sh script. It will copy the necessaty files in respective folders. This script will fail if you don't have turtlebot folder in ~/catkin_ws/src. Refer Homework 0 setup if this is the case.
 
@@ -97,7 +97,7 @@ Some of the terms that we use throughout the assignment are:
 
 	**It is possible that both the load locations of a book or bin are obstructed.** In such a case no solution exists, and you have to regenerate the new maze by restarting server.py. Use less number of books initially to avoid this situation.
 
-#. Grid Size: Grid Size is not used explicitly in this homework. It is dependent on number of books. For this homework, Grid Size = 6 * number of subjects.
+#. Grid Size: Grid Size is not used explicitly in this homework. It is dependent on the number of books. For this homework, Grid Size = 6 * number of subjects.
 
 	.. note ::
 
@@ -163,11 +163,34 @@ Moving TurtleBot
 
 #. Complete the problem.pddl and domain.pddl to proceed further. This is explained in next few sections.
 
-#. Implement the refinement.py to move the TurtleBot. This is explained in next few sections.
+#. Complete refinement.py. This is explained in next few sections.
+
+#. Run refinement.py to generate the plan.
 
 	.. code-block:: bash
 
-		rosrun search refinement.py
+		rosrun search refinement.py -step 1
+
+#. Run refinement.py to run the TurtleBot.
+
+	.. code-block:: bash
+
+		rosrun search refinement.py -step 2
+
+	Run refinement.py with -h parameter to see it's usage.
+
+	.. code-block:: bash
+
+		$ ./refinement.py -h
+		usage: refinement.py [-h] [-step 1] [-planner FF] [-params]
+
+		optional arguments:
+		  -h, --help   show this help message and exit
+		  -step 1      Step to execute:
+		               1. Generate plan
+		               2. Perform downward refinement and execute
+		  -planner FF  which planner to use {FF, FD, PP}
+		  -params      parameters to the planner
 
 
 ==================================

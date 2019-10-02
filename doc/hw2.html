@@ -248,7 +248,7 @@ Refer to <a class="reference external" href="https://aair-lab.github.io/teaching
 </li>
 <li><p class="first">Change permission of all scripts in search folder to make them executable.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod u+x ~/catkin_ws/src/planning/*.py
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod u+x ~/catkin_ws/src/planning/scripts/*.py
 </pre></div>
 </div>
 </div></blockquote>
@@ -281,7 +281,7 @@ Refer to <a class="reference external" href="https://aair-lab.github.io/teaching
 <p class="last"><strong>It is possible that both the load locations of a book or bin are obstructed.</strong> In such a case no solution exists, and you have to regenerate the new maze by restarting server.py. Use less number of books initially to avoid this situation.</p>
 </div>
 <ol class="arabic">
-<li><p class="first">Grid Size: Grid Size is not used explicitly in this homework. It is dependent on number of books. For this homework, Grid Size = 6 * number of subjects.</p>
+<li><p class="first">Grid Size: Grid Size is not used explicitly in this homework. It is dependent on the number of books. For this homework, Grid Size = 6 * number of subjects.</p>
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -358,9 +358,31 @@ optional arguments:
 </li>
 <li><p class="first">Complete the problem.pddl and domain.pddl to proceed further. This is explained in next few sections.</p>
 </li>
-<li><p class="first">Implement the refinement.py to move the TurtleBot. This is explained in next few sections.</p>
+<li><p class="first">Complete refinement.py. This is explained in next few sections.</p>
+</li>
+<li><p class="first">Run refinement.py to generate the plan.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search refinement.py
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search refinement.py -step <span class="m">1</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run refinement.py to run the TurtleBot.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search refinement.py -step <span class="m">2</span>
+</pre></div>
+</div>
+<p>Run refinement.py with -h parameter to see it’s usage.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./refinement.py -h
+usage: refinement.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-step <span class="m">1</span><span class="o">]</span> <span class="o">[</span>-planner FF<span class="o">]</span> <span class="o">[</span>-params<span class="o">]</span>
+
+optional arguments:
+  -h, --help   show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -step <span class="m">1</span>      Step to execute:
+               <span class="m">1</span>. Generate plan
+               <span class="m">2</span>. Perform downward refinement and execute
+  -planner FF  which planner to use <span class="o">{</span>FF, FD, PP<span class="o">}</span>
+  -params      parameters to the planner
 </pre></div>
 </div>
 </div></blockquote>
