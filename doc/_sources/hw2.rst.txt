@@ -181,7 +181,7 @@ Moving TurtleBot
 
 	.. code-block:: bash
 
-		$ ./refinement.py -h
+		$ rosrun planning refinement.py -h
 		usage: refinement.py [-h] [-step 1] [-planner FF] [-params]
 
 		optional arguments:
@@ -431,7 +431,7 @@ Generate the plan
 
 	.. code-block:: bash
 
-		$ ./refinement.py -h
+		$ rosrun planning refinement.py -h
 		usage: refinement.py [-h] [-step 1] [-planner FF] [-params]
 
 		optional arguments:
@@ -446,7 +446,7 @@ Assume that you use FD, then to generate the plan your command will be:
 
 	.. code-block:: bash
 
-		./refinement.py -step 1 -planner FD -params "--search \"astar(blind())\""
+		rosrun planning refinement.py -step 1 -planner FD -params "--search \"astar(blind())\""
 
 	.. note::
 		If your parameters have any " symbols, then delimit them using backward-slash.

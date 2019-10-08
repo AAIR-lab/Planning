@@ -372,7 +372,7 @@ optional arguments:
 </pre></div>
 </div>
 <p>Run refinement.py with -h parameter to see it’s usage.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./refinement.py -h
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rosrun planning refinement.py -h
 usage: refinement.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-step <span class="m">1</span><span class="o">]</span> <span class="o">[</span>-planner FF<span class="o">]</span> <span class="o">[</span>-params<span class="o">]</span>
 
 optional arguments:
@@ -644,7 +644,7 @@ OPTIONS   DESCRIPTIONS
 </li>
 <li><p class="first">Run refinement.py with -h parameter to see it’s usage.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./refinement.py -h
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rosrun planning refinement.py -h
 usage: refinement.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-step <span class="m">1</span><span class="o">]</span> <span class="o">[</span>-planner FF<span class="o">]</span> <span class="o">[</span>-params<span class="o">]</span>
 
 optional arguments:
@@ -661,7 +661,7 @@ optional arguments:
 </ol>
 <p>Assume that you use FD, then to generate the plan your command will be:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./refinement.py -step <span class="m">1</span> -planner FD -params <span class="s2">&quot;--search \&quot;astar(blind())\&quot;&quot;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun planning refinement.py -step <span class="m">1</span> -planner FD -params <span class="s2">&quot;--search \&quot;astar(blind())\&quot;&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -956,7 +956,7 @@ optional arguments:
 <h2>class Refine<a class="headerlink" href="#class-refine" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="refinement.Refine">
-<em class="property">class </em><code class="descclassname">refinement.</code><code class="descname">Refine</code><span class="sig-paren">(</span><em>plan_file</em>, <em>planner</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement.html#Refine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.Refine" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">refinement.</code><code class="descname">Refine</code><span class="sig-paren">(</span><em>plan_file</em>, <em>planner</em><span class="sig-paren">)</span><a class="headerlink" href="#refinement.Refine" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class has code to refine the high level actions used by PDDL to the the low level actions used by the TurtleBot.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -979,7 +979,7 @@ optional arguments:
 </dl>
 <dl class="method">
 <dt id="refinement.Refine.execute_action">
-<code class="descname">execute_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement.html#Refine.execute_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.Refine.execute_action" title="Permalink to this definition">¶</a></dt>
+<code class="descname">execute_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#refinement.Refine.execute_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method picks an action from self.actions and send it to RobotActionServer for execution.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -993,7 +993,7 @@ optional arguments:
 
 <dl class="method">
 <dt id="refinement.Refine.get_path">
-<code class="descname">get_path</code><span class="sig-paren">(</span><em>init_state</em>, <em>goal_locations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement.html#Refine.get_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.Refine.get_path" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_path</code><span class="sig-paren">(</span><em>init_state</em>, <em>goal_locations</em><span class="sig-paren">)</span><a class="headerlink" href="#refinement.Refine.get_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method searches for a path from init_state to one of the possible goal_locations</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1020,7 +1020,7 @@ optional arguments:
 
 <dl class="method">
 <dt id="refinement.Refine.refine_plan">
-<code class="descname">refine_plan</code><span class="sig-paren">(</span><em>plan_file</em>, <em>planner</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement.html#Refine.refine_plan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.Refine.refine_plan" title="Permalink to this definition">¶</a></dt>
+<code class="descname">refine_plan</code><span class="sig-paren">(</span><em>plan_file</em>, <em>planner</em><span class="sig-paren">)</span><a class="headerlink" href="#refinement.Refine.refine_plan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform downward refinement to convert the high level plan into a low level executable plan.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
