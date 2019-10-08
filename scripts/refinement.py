@@ -35,7 +35,6 @@ PROBLEM_FILE_PATH = ROOT_PATH+"/problem.pddl"
 #############################
 FD_PATH = ROOT_PATH+"/planners/FD/fast-downward.py"
 FF_PATH = ROOT_PATH+"/planners/FF/ff"
-PP_PATH = ROOT_PATH+"/planners/pyperplan/src/pyperplan.py"
 
 ##################################
 ## Set FD's plan file path here ##
@@ -46,11 +45,11 @@ FD_PLAN_FILE = ROOT_PATH+"/sas_plan"
 ## Change default parameters to FD or Pyperplan here ##
 #######################################################
 FD_DEFAULT_PARAMS = "--search \"lazy_greedy([ff()], preferred=[ff()])\""
-PP_DEFAULT_PARAMS = "-H hff -s gbf"
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument('-step', help="Step to execute:\n1. Generate plan\n2. Perform downward refinement and execute", metavar='1', action='store', dest='step', default="1", type=int)
-parser.add_argument("-planner", metavar="FD", dest='planner', default='FD', help="which planner to use {FF, FD, PP}")
+parser.add_argument("-planner", metavar="FD", dest='planner', default='FD', help="which planner to use {FF, FD}")
+PP_DEFAULT_PARAMS = "-H hff -s gbf"
 parser.add_argument("-plan_file", metavar="", dest='plan_file', default="", help="location of plan file")
 parser.add_argument("-params", metavar="", dest='params', default="", help="parameters to the planner")
 
@@ -69,7 +68,7 @@ class Refine:
         """
         :param plan_file: Path to the file where plan is stored. This is generally stored at the path from where the planner was called.
         :type plan_file: str
-        :param planner: Planner that was used to generate this plan. This is needed to parse the plan and convert to/store in a data structure in Python. Only possible values are FF, FD, and PP.
+        :param planner: Planner that was used to generate this plan. This is needed to parse the plan and convert to/store in a data structure in Python. Only possible values are FF and FD.
         :type planner: str 
 
         Attributes:
@@ -119,7 +118,7 @@ class Refine:
         
         :param plan_file: Path to the file where plan is stored. This is generally stored at the path from where the planner was called.
         :type plan_file: str
-        :param planner: Planner that was used to generate this plan. This is needed to parse the plan and convert to/store in a data structure in Python. Only possible values are FF, FD, and PP.
+        :param planner: Planner that was used to generate this plan. This is needed to parse the plan and convert to/store in a data structure in Python. Only possible values are FF and FD.
         :type planner: str 
 
         :returns: List of refined action tuples that will be added to the execution queue.
@@ -257,8 +256,6 @@ def generate_plan(planner, params):
         command += FF_PATH + " -o "
     elif planner == "FD":
         command += FD_PATH + " "
-    else:
-        command += PP_PATH + " "
 
     command += DOMAIN_FILE_PATH + " "
 
@@ -269,8 +266,6 @@ def generate_plan(planner, params):
 
     if planner == "FD" and params == "":
         command += FD_DEFAULT_PARAMS
-    elif planner == "PP" and params == "":
-        command += PP_DEFAULT_PARAMS
     else:
         command += params
 
@@ -283,7 +278,7 @@ if __name__ == "__main__":
 
     if args.planner == None or args.planner == "":
         print "Planner not provided, using FD by default"
-    elif args.planner not in ["FD", "FF", "PP"]:
+    elif args.planner not in ["FD", "FF"]:
         print "Incorrect Planner provided. Aborting"
         exit(1)
     else:

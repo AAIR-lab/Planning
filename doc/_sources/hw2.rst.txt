@@ -70,7 +70,7 @@ Refer to `Homework 0 Webpage <https://aair-lab.github.io/teaching/571_f19_hw/hw0
 
 	.. code-block:: bash
 
-	   chmod u+x ~/catkin_ws/src/planning/env_setup.sh && ./env_setup.sh
+	   chmod u+x ~/catkin_ws/src/planning/env_setup.sh && ~/catkin_ws/src/planning/env_setup.sh
 
 =============================
 Environment Setting
@@ -189,7 +189,7 @@ Moving TurtleBot
 		  -step 1      Step to execute:
 		               1. Generate plan
 		               2. Perform downward refinement and execute
-		  -planner FF  which planner to use {FF, FD, PP}
+		  -planner FF  which planner to use {FF, FD}
 		  -params      parameters to the planner
 
 
@@ -297,9 +297,9 @@ Actions
 Checking correctness of pddl files
 ===================================
 
-We have provided 3 planners for you to use in planning. Fast Downward (FD), Fast Forward (FF), and PyperPlan (PP). These are located at ~/catkin_ws/src/planning/planners/
+We have provided 2 planners for you to use in planning. Fast Downward (FD) and Fast Forward (FF). These are located at ~/catkin_ws/src/planning/planners/
 
-You can use any of these to generate the plans and check manually for a smaller number of subjects and books if the plan looks valid. Please find below how to run each of the planner.
+You can use any one of these to generate the plans and check manually for a smaller number of subjects and books if the plan looks valid. Please find below how to run each of the planner.
 
 *************
 Fast Downward
@@ -407,52 +407,14 @@ Fast Forward
 
 #. If your domain and problem files are **syntactically correct**, you will get a plan that can also be found in **problem.pddl.soln** file.
 
-*************
-Pyperplan
-*************
-#. Change permission of the executable.
+.. note::
+	Use the FF provided by us. This will generate plan file (problem.pddl.soln) similar to the one produced by Fast Downward. So you need not worry about writing two different parsers to parse the plan.
 
-	.. code-block:: bash
-
-		cd ~/catkin_ws/src/planning && chmod u+x ./planners/pyperplan/src/pyperplan.py 
-
-#. Run FF Planner. Ensure that you have updated goal in problem.pddl before this command.
-
-	.. code-block:: bash
-	
-		./planners/pyperplan/src/pyperplan.py domain.pddl problem.pddl -s bfs
-
-#. You can change the parameters given to FF. For its usage simply run pyperplan with -h parameter. 
-
-	.. code-block:: bash
-
-		$ ./planners/pyperplan/src/pyperplan.py -h
-		usage: pyperplan.py [-h] [-l {debug,info,warning,error}]
-		                    [-H {landmark,hadd,hff,hmax,hsa,blind,lmcut}]
-		                    [-s {astar,wastar,gbf,bfs,ehs,ids,sat}]
-		                    [domain] problem
-
-		positional arguments:
-		  domain
-		  problem
-
-		optional arguments:
-		  -h, --help            show this help message and exit
-		  -l {debug,info,warning,error}, --loglevel {debug,info,warning,error}
-		  -H {landmark,hadd,hff,hmax,hsa,blind,lmcut}, --heuristic {landmark,hadd,hff,hmax,hsa,blind,lmcut}
-		                        Select a heuristic (default: hff)
-		  -s {astar,wastar,gbf,bfs,ehs,ids,sat}, --search {astar,wastar,gbf,bfs,ehs,ids,sat}
-		                        Select a search algorithm from astar, weighted astar,
-		                        greedy best first, breadth first, enforced
-		                        hillclimbing, iterative deepening, sat solve (default:
-		                        bfs)
-
-#. If your domain and problem files are **syntactically correct**, you will get a plan that can also be found in **problem.pddl.soln** file.
-
-You can play around with any of these planners. That's why we have provided the source code of them alongwith the executables.
+You can play around with any of these two planners. That's why we have provided the source code of them alongwith the executables.
 
 .. warning::
 	You have to manually check if the plan returned by these planners can be executed in the environment or not. Getting a plan only guarantees that your syntax is correct.
+
 
 
 ==================================
@@ -477,7 +439,7 @@ Generate the plan
 		  -step 1      Step to execute:
 		               1. Generate plan
 		               2. Perform downward refinement and execute
-		  -planner FF  which planner to use {FF, FD, PP}
+		  -planner FF  which planner to use {FF, FD}
 		  -params      parameters to the planner
 
 Assume that you use FD, then to generate the plan your command will be:

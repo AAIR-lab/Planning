@@ -55,7 +55,7 @@
 
 
 
-
+#include<string.h>
 
 #include "ff.h"
 
@@ -478,6 +478,17 @@ void load_fct_file( char *filename );
 struct tms lstart, lend;
 
 
+char *strlwr(char *str)
+{
+  unsigned char *p = (unsigned char *)str;
+
+  while (*p) {
+     *p = tolower((unsigned char)*p);
+      p++;
+  }
+
+  return str;
+}
 
 
 
@@ -765,10 +776,8 @@ void output_planner_info( void )
 
   printf("\n\n");
 
-  exit( 0 );
-
   print_official_result();
-
+  exit( 0 );
 }
 
 
@@ -788,14 +797,15 @@ void print_official_result( void )
     return;
   }
 
+
+  for ( i = 0; i < gnum_plan_ops; i++ ) {
+    print_official_op_name(gplan_ops[i]);
+    fprintf(out, "\n");
+  }
+
   times( &lend );
   fprintf(out, "Time %d\n", 
 	 (int) ((lend.tms_utime - lstart.tms_utime + lend.tms_stime - lstart.tms_stime) * 10.0));
-
-  for ( i = 0; i < gnum_plan_ops; i++ ) {
-    print_official_op_name( gplan_ops[i] );
-    fprintf(out, "\n");
-  }
 
   fclose( out );
 
@@ -812,9 +822,9 @@ void print_official_op_name( int index )
 
   if ( a->norm_operator ||
        a->pseudo_action ) {
-    fprintf(out, "(%s", a->name ); 
+    fprintf(out, "(%s", strlwr(a->name) ); 
     for ( i = 0; i < a->num_name_vars; i++ ) {
-      fprintf(out, " %s", gconstants[a->name_inst_table[i]]);
+      fprintf(out, " %s", strlwr(gconstants[a->name_inst_table[i]]));
     }
     fprintf(out, ")");
   }
@@ -932,4 +942,6 @@ Bool process_command_line( int argc, char *argv[] )
   return TRUE;
 
 }
+
+
 
