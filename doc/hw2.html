@@ -762,6 +762,13 @@ optional arguments:
 </div>
 </div></blockquote>
 </li>
+<li><p class="first">If possible, you can avoid doing #4 by adding the line below in the ~/.bashrc file.</p>
+  <blockquote>
+  <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+  </pre></div>
+  </div>
+  </div></blockquote>
+  </li>
 <li><p class="first">At times, the TurtleBot takes some time to perform an action, so wait for some time if no movement is visible.</p>
 </li>
 <li><p class="first">Check the discussion page on Canvas to see if the problem you are facing is already answered. If not, start a new discussion.</p>
@@ -813,7 +820,7 @@ optional arguments:
 <dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span>
 
 <span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
-<span class="n">init_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_init_state</span><span class="p">()</span>
+<span class="n">init_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd>

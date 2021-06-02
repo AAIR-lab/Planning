@@ -74,9 +74,9 @@ class Refine:
         Attributes:
             **status_subscriber**: To subscribe to the "/status" topic, which gives the State of the robot.
 
-            **actions_queue** (tuple(action_name, action_params)): Used to store the refined action tuples. You can decide what parameters you want to store for each action. Store the parameters that you need to pass to execute_<action_name>_action methods of RobotActionServer class.
+            **actions_queue** (tuple(action_name, action_params)): Used to store the refined action tuples. You can decide what parameters you want to store for each action. Store the parameters that you need to pass to execute_<action_name>_action methods of RobotActionServer class through the Helper class.
 
-            **action_index** (int): Stores the index of action that needs to be sent to RobotActionServer for execution.
+            **action_index** (int): Stores the index of action that needs to be sent to RobotActionServer through the Helper class for execution.
         """
 
         rospy.init_node('listener', anonymous=True)
@@ -98,7 +98,8 @@ class Refine:
 
     def execute_action(self):
         """
-        This method picks an action from self.actions and send it to RobotActionServer for execution.
+        This method picks an action from self.actions and sends it to RobotActionServer through the Helper object for execution. 
+        Use self.helper.execute_move_action(action_list), execute_pick_action(book_name, state), and execute_place_action(book_name, bin_name, state) to do this.
 
         :rtype: None
         
